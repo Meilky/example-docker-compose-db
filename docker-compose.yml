@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  database:
+    container_name: my-database 
+    image: mariadb:latest
+    environment:
+      - MARIADB_ROOT_PASSWORD=$DB_ROOT_PASSWORD
+      - MARIADB_USER=$DB_USER
+      - MARIADB_PASSWORD=$DB_PASSWORD
+      - MARIADB_DATABASE=$DB_NAME
+    restart: on-failure
+    volumes:
+      - ./mariadb:/var/lib/mysql
+      - ./mariadb-init:/docker-entrypoint-initdb.d
