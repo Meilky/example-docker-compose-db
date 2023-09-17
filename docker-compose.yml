@@ -9,6 +9,8 @@ services:
       - MARIADB_PASSWORD=$DB_PASSWORD
       - MARIADB_DATABASE=$DB_NAME
     restart: on-failure
+    ports:
+      - $DB_PORT:3306
     volumes:
       - ./mariadb:/var/lib/mysql
       - ./mariadb-init:/docker-entrypoint-initdb.d
