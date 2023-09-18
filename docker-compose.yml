@@ -1,11 +1,11 @@
 version: '3.8'
 services:
   database:
-    container_name: my-database 
+    container_name: example-mariadb 
     image: mariadb:latest
     env_file:
       - .env
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - $DB_PORT:3306
     volumes:
