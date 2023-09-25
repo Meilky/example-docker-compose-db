@@ -1,10 +1,13 @@
-version: '3.8'
+version: "3.8"
 services:
   database:
-    container_name: example-mariadb 
+    container_name: example-mariadb
     image: mariadb:latest
-    env_file:
-      - .env
+    environment:
+      - MARIADB_ROOT_PASSWORD=$DB_ROOT_PASSWORD
+      - MARIADB_USER=$DB_USER
+      - MARIADB_PASSWORD=$DB_PASSWORD
+      - MARIADB_DATABASE=$DB_NAME
     restart: unless-stopped
     ports:
       - $DB_PORT:3306
